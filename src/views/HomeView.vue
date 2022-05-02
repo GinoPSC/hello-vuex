@@ -5,9 +5,14 @@
   <div class="counter">
     {{ $store.state.counter }}
   </div>
+  <div class="square">
+    {{ $store.state.counter }}
+    <sup>2</sup> =
+    {{ $store.getters.sqr }}
+  </div>
   <div class="buttons">
-    <button @click="$store.commit('addCount')">+</button>
-    <button @click="$store.commit('dropCount')">-</button>
+    <button @click="$store.dispatch('add_random_number')">+</button>
+    <button @click="$store.dispatch('drop_random_number')">-</button>
   </div>
 </template>
 

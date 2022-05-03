@@ -2,7 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
   </div>
-  <div class="counter">
+  <div class="counter" :style="{ color: $store.state.ID_Color }">
     {{ $store.state.counter }}
   </div>
   <div class="square">
@@ -14,12 +14,28 @@
     <button @click="$store.dispatch('add_random_number')">+</button>
     <button @click="$store.dispatch('drop_random_number')">-</button>
   </div>
+  <div>
+    <input
+      v-model="CountColor"
+      placeholder="Ingresa un color"
+      type="text"
+    >
+  </div>
 </template>
 
 <script>
 
 export default {
-  name: 'HomeView'
+  name: 'HomeView',
+  computed: {
+    CountColor:{
+      get(){
+        return this.$store.state.ID_Color
+      },set(inputColor){
+        this.$store.commit('setColor', inputColor)
+      }
+    }
+  }
 }
 </script>
 

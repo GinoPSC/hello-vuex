@@ -3,7 +3,8 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    counter: 0
+    counter: 0,
+    ID_Color: 'red'
   },
   getters: {
     sqr(state){
@@ -16,6 +17,9 @@ export default createStore({
     },
     dropCount(state, RNG_Number){
       state.counter -= RNG_Number
+    },
+    setColor(state, newColor){
+      state.ID_Color = newColor
     }
   },
   actions: {

@@ -2,39 +2,21 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
   </div>
-  <div class="counter" :style="{ color: $store.state.ID_Color }">
-    {{ $store.state.counter }}
-  </div>
-  <div class="square">
-    {{ $store.state.counter }}
-    <sup>2</sup> =
-    {{ $store.getters.sqr }}
-  </div>
-  <div class="buttons">
-    <button @click="$store.dispatch('add_random_number')">+</button>
-    <button @click="$store.dispatch('drop_random_number')">-</button>
-  </div>
-  <div>
-    <input
-      v-model="CountColor"
-      placeholder="Ingresa un color"
-      type="text"
-    >
-  </div>
+  <counter/>
+  <square/>
+  <buttons/>
+  <colours/>
 </template>
 
 <script>
 
 export default {
   name: 'HomeView',
-  computed: {
-    CountColor:{
-      get(){
-        return this.$store.state.ID_Color
-      },set(inputColor){
-        this.$store.commit('setColor', inputColor)
-      }
-    }
+  components:{
+    'counter': require('@/components/contador.vue').default,
+    'square': require('@/components/potencia.vue').default,
+    'buttons': require('@/components/botones.vue').default,
+    'colours': require('@/components/colores.vue').default
   }
 }
 </script>
